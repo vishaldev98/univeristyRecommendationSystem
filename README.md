@@ -1,3 +1,3 @@
 # university-recommendation
 University Recommendation System<br/>
-Author - Vishal Gajjar
+Author - Vishal Gajjar(Full-Stack Developer)
