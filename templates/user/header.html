@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Footer</title>
+    <style>
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 0 20px;
+            min-width: 300px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .course-item {
+            background-color: #444;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .course-item h4 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .course-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .button-group a {
+            background-color: #555;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-group a:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Course Grid</h3>
+                <div class="course-grid">
+                    <div class="course-item">
+                        <h4>Computer Science</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 2 years</p>
+                        <p>Focus: Algorithms, AI, Software Engineering</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Cybersecurity</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1.5-2 years</p>
+                        <p>Focus: Network Security, Cryptography, Digital Forensics</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Health Data Science</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 2 years</p>
+                        <p>Focus: Biostatistics, Machine Learning, Health Informatics</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Accounting</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1-2 years</p>
+                        <p>Focus: Financial Reporting, Auditing, Taxation</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Supply Chain Management</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1-2 years</p>
+                        <p>Focus: Logistics, Operations, Analytics</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Data Science</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1-2 years</p>
+                        <p>Focus: Machine Learning, Big Data, Statistical Analysis</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Business Analytics</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1-2 years</p>
+                        <p>Focus: Predictive Modeling, Data Visualization, Decision Sciences</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Information Systems</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1.5-2 years</p>
+                        <p>Focus: Database Management, IT Strategy, Systems Analysis</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Artificial Intelligence</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1.5-2 years</p>
+                        <p>Focus: Machine Learning, Natural Language Processing, Computer Vision</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Financial Engineering</h4>
+                        <p>Degree: MS</p>
+                        <p>Duration: 1-2 years</p>
+                        <p>Focus: Quantitative Finance, Risk Management, Computational Methods</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Course List</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Registration</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Complaints</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="button-group">
+            <a href="#">Sign In</a>
+            <a href="#">Logout</a>
+        </div>
+    </footer>
+</body>
+</html>

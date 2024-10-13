@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Recommendation System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero {
+            background-image: url('https://example.com/university-campus.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-section {
+            background-color: #f4f4f4;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-form select, .search-form input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #e65c00;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem;
+        }
+
+        .feature {
+            flex-basis: calc(33.333% - 2rem);
+            margin: 1rem;
+            padding: 1.5rem;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-section {
+            background-color: #003366;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        .subscribe-form input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .feature {
+                flex-basis: calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h2>UniRecommend</h2>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Find Your Perfect University Match</h1>
+            <p>Personalized recommendations based on your preferences and qualifications</p>
+            <a href="#search-section" class="button">Get Started</a>
+        </section>
+
+        <section id="search-section" class="search-section">
+            <h2>Search for Courses</h2>
+            <form class="search-form">
+                <select name="course-type">
+                    <option value="">Course Type</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="business">Business</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <input type="text" name="location" placeholder="Location">
+                <input type="text" name="keywords" placeholder="Keywords">
+                <button type="submit" class="button">Search</button>
+            </form>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h3>Personalized Recommendations</h3>
+                <p>Get tailored university suggestions based on your academic profile, interests, and career goals.</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+            <div class="feature">
+                <h3>Comprehensive Database</h3>
+                <p>Access information on thousands of universities and programs worldwide.</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+            <div class="feature">
+                <h3>Easy Comparison</h3>
+                <p>Compare different universities and programs side by side to make informed decisions.</p>
+                <a href="#" class="button">View Details</a>
+            </div>
+        </section>
+
+        <section class="subscribe-section">
+            <h2>Subscribe for More Details</h2>
+            <form class="subscribe-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="button">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 University Recommendation System. All rights reserved.</p>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login / Sign Up</h2>
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="Username" required><br><br>
+                <input type="password" name="password" placeholder="Password" required><br><br>
+                <button type="submit" class="button">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="signupLink">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        var modal = document.getElementById("loginModal");
+        var btn = document.getElementById("loginBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var signupLink = document.getElementById("signupLink");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        signupLink.onclick = function(e) {
+            e.preventDefault();
+            alert("Sign up functionality to be implemented");
+        }
+
+        // Form submission (to be implemented with backend)
+        document.getElementById("loginForm").onsubmit = function(e) {
+            e.preventDefault();
+            alert("Login functionality to be implemented with backend");
+        }
+    </script>
+</body>
+</html>
