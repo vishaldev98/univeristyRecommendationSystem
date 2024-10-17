@@ -35,5 +35,3 @@ def viewPrediction():
             return admin_logout_session()
     except Exception as ex:
         print("admin_view_prediction route exception occured>>>>>>>>>>", ex)
-
-
