@@ -10,7 +10,7 @@ global_loginvo_list = []
 global_login_secretkey_set = {0}
 
 
-@app.route('/', methods=['GET'])
+@app.route('/admin/login', methods=['GET'])
 def admin_load_login():
     try:
         return render_template('admin/login.html')
