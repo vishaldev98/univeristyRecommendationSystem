@@ -1,84 +1,86 @@
 import unittest
+from unittest.mock import patch, MagicMock
 from base import app
-from flask import request
 
-
-class TestLoginSystem(unittest.TestCase):
+class TestComplainSystem(unittest.TestCase):
     def setUp(self):
         # Set up the test client to use with Flask
         self.app = app.test_client()
         self.app.testing = True
 
-    # Test case for rendering the login page
-    def test_admin_load_login(self):
-        response = self.app.get('/admin/login')
+    # Test case for admin viewing complaints
+    @patch('base.com.dao.complain_dao.ComplainDAO.admin_view_complain')
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='admin')
+    def test_admin_view_complain(self, mock_login_session, mock_admin_view_complain):
+        mock_admin_view_complain.return_value = []  # Mock empty complain list
+        response = self.app.get('/admin/view_complain')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'login', response.data)  # Check if the login form is in the rendered template
+        self.assertIn(b'Complaints', response.data)  # Check if the complaints page is rendered
 
-    # Test case for invalid login attempt (wrong credentials)
-    def test_admin_validate_login_invalid_credentials(self):
-        response = self.app.post('/admin/validate_login',
-                                 data=dict(loginUsername='wronguser', loginPassword='wrongpass'))
-        self.assertEqual(response.status_code, 302)  # Should redirect after failure
-        # Check for error message or related feedback in response headers or cookies
-        self.assertIn('username or password is incorrect', response.headers.get('Set-Cookie', ''))
+    # Test case for admin replying to a complaint
+    @patch('base.com.dao.complain_dao.ComplainDAO.edit_complain')
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='admin')
+    def test_admin_load_complain_reply(self, mock_login_session, mock_edit_complain):
+        mock_edit_complain.return_value = [MagicMock()]  # Mock complain data
+        response = self.app.get('/admin/load_complain_reply?complainId=1')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Reply', response.data)  # Check if the reply form is loaded
 
-    # Test case for inactive user login attempt
-    def test_admin_validate_login_inactive_user(self):
-        response = self.app.post('/admin/validate_login',
-                                 data=dict(loginUsername='inactiveuser', loginPassword='password'))
+    # Test case for inserting a complaint reply
+    @patch('base.com.dao.complain_dao.ComplainDAO.update_complain')
+    @patch('base.com.dao.login_dao.LoginDAO.find_login_id', return_value=1)
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='admin')
+    def test_admin_insert_complain_reply(self, mock_login_session, mock_find_login_id, mock_update_complain):
+        response = self.app.post('/admin/insert_complain_reply', data={
+            'complainId': '1',
+            'complainReplyDescription': 'Your issue has been resolved.'
+        })
         self.assertEqual(response.status_code, 302)
-        # Check for "temporarily blocked" message in response headers or cookies
-        self.assertIn('You have been temporarily blocked', response.headers.get('Set-Cookie', ''))
+        self.assertIn('/admin/view_complain', response.headers['Location'])  # Ensure redirect after reply
 
-    # Test case for successful admin login
-    def test_admin_validate_login_successful_admin(self):
-        response = self.app.post('/admin/validate_login', data=dict(loginUsername='admin', loginPassword='password'))
+    # Test case for admin deleting a complaint
+    @patch('base.com.dao.complain_dao.ComplainDAO.delete_complain')
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='admin')
+    def test_admin_delete_complain(self, mock_login_session, mock_delete_complain):
+        response = self.app.get('/admin/delete_complain?complainId=1')
         self.assertEqual(response.status_code, 302)
-        # Check if the cookies are properly set for admin
-        self.assertIn('login_role=admin', response.headers.get('Set-Cookie', ''))
-        self.assertIn('login_secretkey=admin_secret_key', response.headers.get('Set-Cookie', ''))
+        self.assertIn('/admin/view_complain', response.headers['Location'])  # Ensure redirect after deletion
 
-    # Test case for successful user login
-    def test_admin_validate_login_successful_user(self):
-        response = self.app.post('/admin/validate_login', data=dict(loginUsername='user', loginPassword='password'))
+    # Test case for user viewing their complaints
+    @patch('base.com.dao.complain_dao.ComplainDAO.user_view_complain')
+    @patch('base.com.dao.login_dao.LoginDAO.find_login_id', return_value=1)
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='user')
+    def test_user_view_complain(self, mock_login_session, mock_find_login_id, mock_user_view_complain):
+        mock_user_view_complain.return_value = []  # Mock empty complain list
+        response = self.app.get('/user/view_complain')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Complaints', response.data)  # Check if the complaints page for user is rendered
+
+    # Test case for user inserting a complaint
+    @patch('base.com.dao.complain_dao.ComplainDAO.insert_complain')
+    @patch('base.com.dao.login_dao.LoginDAO.find_login_id', return_value=1)
+    @patch('base.com.controller.login_controller.admin_login_session', return_value='user')
+    def test_user_insert_complain(self, mock_login_session, mock_find_login_id, mock_insert_complain):
+        response = self.app.post('/user/insert_complain', data={
+            'complainSubject': 'Test Subject',
+            'complainDescription': 'Test Description'
+        })
         self.assertEqual(response.status_code, 302)
-        # Check if the cookies are properly set for user
-        self.assertIn('login_role=user', response.headers.get('Set-Cookie', ''))
-        self.assertIn('login_secretkey=user_secret_key', response.headers.get('Set-Cookie', ''))
+        self.assertIn('/user/view_complain', response.headers['Location'])  # Ensure redirect after insertion
 
-    # Test case for loading admin dashboard after login
-    def test_admin_load_dashboard(self):
-        with self.app as c:
-            c.set_cookie('localhost', 'login_secretkey', 'admin_secret_key')
-            response = c.get('/admin/load_dashboard')
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b'admin', response.data)  # Check for dashboard content
+    # Test case for invalid session when accessing admin routes
+    @patch('base.com.controller.login_controller.admin_login_session', return_value=None)
+    def test_invalid_session_admin(self, mock_login_session):
+        response = self.app.get('/admin/view_complain')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/admin/logout_session', response.headers['Location'])  # Redirect to logout if session invalid
 
-    # Test case for loading user dashboard after login
-    def test_user_load_dashboard(self):
-        with self.app as c:
-            c.set_cookie('localhost', 'login_secretkey', 'user_secret_key')
-            response = c.get('/user/load_dashboard')
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b'user', response.data)  # Check for user dashboard content
-
-    # Test case for invalid session (no secret key)
-    def test_invalid_session(self):
-        response = self.app.get('/admin/load_dashboard')
-        self.assertEqual(response.status_code, 302)  # Redirect to login due to invalid session
-
-    # Test case for logout functionality
-    def test_admin_logout_session(self):
-        with self.app as c:
-            c.set_cookie('localhost', 'login_secretkey', 'admin_secret_key')
-            c.set_cookie('localhost', 'login_username', 'admin')
-            response = c.get('/admin/logout_session')
-            self.assertEqual(response.status_code, 302)  # Should redirect to login after logout
-            # Ensure that cookies have been cleared after logout
-            self.assertNotIn('login_secretkey', response.headers.get('Set-Cookie', ''))
-            self.assertNotIn('login_username', response.headers.get('Set-Cookie', ''))
-
+    # Test case for invalid session when accessing user routes
+    @patch('base.com.controller.login_controller.admin_login_session', return_value=None)
+    def test_invalid_session_user(self, mock_login_session):
+        response = self.app.get('/user/view_complain')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/admin/logout_session', response.headers['Location'])  # Redirect to logout if session invalid
 
 if __name__ == '__main__':
     unittest.main()

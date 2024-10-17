@@ -21,4 +21,3 @@ class LoginVO(db.Model):
         }
 
 
-# db.create_all()
