@@ -11,6 +11,7 @@ class DepartmentDAO:
     def view_department(self):
         department_vo_list = db.session.query(DepartmentVO, DegreeVO) \
             .join(DegreeVO, DepartmentVO.department_degree_id == DegreeVO.degree_id).all()
+
         return department_vo_list
 
     def delete_department(self, department_id):

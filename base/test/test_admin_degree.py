@@ -47,5 +47,7 @@ class AdminDegreeTestCase(unittest.TestCase):
                 'degreeDescription': 'Updated Description'
             })
             self.assertEqual(response.status_code, 302)
+
+
 if __name__ == '__main__':
     unittest.main()
