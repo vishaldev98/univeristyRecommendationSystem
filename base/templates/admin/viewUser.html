@@ -24,7 +24,6 @@
         <div class="navbar-bg"></div>
 
         {% include 'admin/header.html' %}
-
         {% include 'admin/menu.html' %}
 
         <!-- Main Content -->
@@ -39,8 +38,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-hover" id="tableExport"
-                                               style="width:100%;">
+                                        <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
                                             <thead>
                                             <tr>
                                                 <th>User Firstname</th>
@@ -52,25 +50,29 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for user in users %}
-                                            <tr>
-                                                <td>{{ user.user_firstname }}</td>
-                                                <td>{{ user.user_lastname }}</td>
-                                                <td>{{ user.user_gender }}</td>
-                                                <td>{{ user.user_address }}</td>
+                                            {% if users %}
+                                                {% for user in users %}
+                                                <tr>
+                                                    <td>{{ user.user_firstname }}</td>
+                                                    <td>{{ user.user_lastname }}</td>
+                                                    <td>{{ user.user_gender }}</td>
+                                                    <td>{{ user.user_address }}</td>
 
-                                                <td>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-outline-primary">Block
-                                                        </button>
-                                                    </a>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-outline-secondary">Unblock
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
+                                                    <td>
+                                                        <a href="">
+                                                            <button type="button" class="btn btn-outline-primary">Block</button>
+                                                        </a>
+                                                        <a href="">
+                                                            <button type="button" class="btn btn-outline-secondary">Unblock</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="6">No users found.</td>
+                                                </tr>
+                                            {% endif %}
                                             </tbody>
                                         </table>
                                     </div>

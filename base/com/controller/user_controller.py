@@ -14,7 +14,7 @@ from base.com.vo.login_vo import LoginVO
 from base.com.vo.user_vo import UserVO
 
 
-@app.route('/user/load_user', methods=['GET'])
+@app.route('/user/load_user', methods=['GET','POST'])
 def user_load_user():
     try:
         country_dao = CountryDAO()

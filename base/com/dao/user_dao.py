@@ -10,7 +10,7 @@ class UserDAO:
     def get_all_users(self):
         """Fetch all users from the database."""
         try:
-            return UserVO.query.all()
+            return UserVO.query.all()  # Fetch all users from the user_table
         except Exception as ex:
-            print("Error fetching users: ", ex)
+            print("Error fetching users: ", ex)  # Ensure this prints any exceptions
             return []
