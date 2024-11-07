@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Academ - Register</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- bootstrap v4.0.0 -->
+    <link rel="stylesheet" href="../../static/userResources/css/bootstrap.min.css">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="../../static/userResources/css/font-awesome.min.css">
+    <!-- themify-icons css -->
+    <link rel="stylesheet" href="../../static/userResources/css/themify-icons.css">
+    <!-- themify-icons css -->
+    <link rel="stylesheet" href="../../static/userResources/css/ionicons.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="../../static/userResources/css/animate.css">
+    <!-- cssanimation css -->
+    <link rel="stylesheet" href="../../static/userResources/css/cssanimation.min.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="../../static/userResources/css/jquery-ui.min.css">
+    <!-- venobox css -->
+    <link rel="stylesheet" href="../../static/userResources/css/venobox.css">
+    <!-- jquery.mmenu css -->
+    <link rel="stylesheet" href="../../static/userResources/css/jquery.mmenu.css">
+    <!-- slick css -->
+    <link rel="stylesheet" href="../../static/userResources/css/slick.css">
+    <!-- slick-theme css -->
+    <link rel="stylesheet" href="../../static/userResources/css/slick-theme.css">
+    <!-- helper css -->
+    <link rel="stylesheet" href="../../static/userResources/css/helper.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../../static/userResources/css/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="../../static/userResources/css/responsive.css">
+</head>
+
+<body>
+<!--[if lte IE 9]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+
+{% include 'user/header.html' %}
+<!--page-banner-area start-->
+<div class="page-banner height-200 bg-1">
+    <div class="d-table">
+        <div class="page-title vertical-middle text-center">
+            <h2>Academic Details</h2>
+        </div>
+    </div>
+</div>
+<!--page-banner-area end-->
+
+<!--breadcrumb-area start-->
+<div class="breadcrumb-area mt-25">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="site-breadcrumb">
+                    <ul class="list-none">
+                        <li><a href="#">Home</a></li>
+                        <li><i class="fa fa-angle-right"></i></li>
+                        <li>Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumb-area end-->
+
+<!--register-area start-->
+<div class="register-area mt-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-sm-40">
+                <div class="section-title style-3">
+                    <h3>Fill Your Academic Details</h3>
+                </div>
+                <div class="input-form register-form mt-60">
+                    <form id="contactForm" data-toggle="validator" method="post" action="/user/insert_predicition">
+                        <div class="row">
+                            <div class="col-sm-12 mt-25 form-controls">
+                                <select class="col-sm form-control" name="userCountryname">
+                                    <option selected disabled>Select Country</option>
+                                    {% for index in country_vo_list %}
+                                        <option value="{{ index['country_name'] }}">{{ index['country_name'] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <input type="text" name="predictionIelts" placeholder="Enter Your IELTS Band Score"/>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <input type="text" name="predictionTofel" placeholder="Enter Your TOFEL Score"/>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <input type="text" name="predicitionGre" placeholder="Enter Your GRE Score"/>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <input type="text" name="predicitionGpa" placeholder="Enter Your GPA Score"/>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <select class="col-sm form-control" name="predictionInternshipmonths">
+                                    <option selected disabled>Internship Months</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <select class="col-sm form-control" name="predictionPassoutyear">
+                                    <option selected disabled>Pass Out Year</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2015">2016</option>
+                                    <option value="2015">2017</option>
+                                    <option value="2015">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-sm-6 mt-25">
+                                <select class="col-sm form-control" name="predictionWorkexperience">
+                                    <option selected disabled>Work Experience</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6 mt-25">
+                                <select class="col-sm form-control" name="predictionResearchpaper">
+                                    <option selected disabled>Research Paper</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-12 mt-25">
+                                <select class="col-sm form-control" name="predicitonConferenceattend">
+                                    <option selected disabled>Conference Attend</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-lg-6 mt-30">
+                                <input type="submit" class="btn-common" style="margin-left:250px;"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--register-area end-->
+{% include 'user/footer.html' %}
+
+<!-- modernizr js -->
+<script src="../../static/userResources/js/vendor/modernizr-3.6.0.min.js"></script>
+<!-- jquery-3.3.1 version -->
+<script src="../../static/userResources/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- jquery-migrate-3.0.0.min.js version -->
+<script src="../../static/userResources/js/vendor/jquery-migrate-3.0.0.min.js"></script>
+<!-- bootstra.min js -->
+<script src="../../static/userResources/js/bootstrap.min.js"></script>
+<!-- jquery-ui.min js -->
+<script src="../../static/userResources/js/jquery-ui.min.js"></script>
+<!-- mmenu js -->
+<script src="../../static/userResources/js/jquery.mmenu.js"></script>
+<!---venobox-js-->
+<script src="../../static/userResources/js/venobox.min.js"></script>
+<!---slick-js-->
+<script src="../../static/userResources/js/slick.min.js"></script>
+<!---counterup-js-->
+<script src="../../static/userResources/js/jquery.counterup.min.js"></script>
+<!---waypoints-js-->
+<script src="../../static/userResources/js/waypoints.js"></script>
+<!-- jquery.countdown js -->
+<script src="../../static/userResources/js/jquery.countdown.min.js"></script>
+<!---isotop-js-->
+<script src="../../static/userResources/js/isotope.pkgd.min.js"></script>
+<!---letteranimation-js-->
+<script src="../../static/userResources/js/letteranimation.min.js"></script>
+<!-- plugins js -->
+<script src="../../static/userResources/js/plugins.js"></script>
+<!-- main js -->
+<script src="../../static/userResources/js/main.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body login-popup">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </button>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="login-left overlay">
+                            <img src="../../static/userResources/images/register/4.jpg" alt=""/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="login-right pr-30">
+                            <div class="section-title">
+                                <h3>Sign Up and Connect to <br/> Academ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt.</p>
+                            </div>
+                            <div class="input-form register-form mt-10">
+                                <form method="POST" action="#">
+                                    <div class="row">
+                                        <div class="col-sm-12 mt-25">
+                                            <label>Username*</label>
+                                            <input type="text"/>
+                                        </div>
+                                        <div class="col-sm-12 mt-25">
+                                            <label>Password*</label>
+                                            <input type="password"/>
+                                        </div>
+                                        <div class="col-lg-6 mt-30">
+                                            <input type="checkbox" id="agree2"/>
+                                            <label for="agree2">Remember</label>
+                                        </div>
+                                        <div class="col-lg-6 mt-30">
+                                            <button class="btn-common">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
