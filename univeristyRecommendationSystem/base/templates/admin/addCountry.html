@@ -4,86 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>University Recommendation System</title>
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="../../static/adminResources/css/app.min.css">
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
-    <link rel="stylesheet" href="../../static/adminResources/css/components.css">
-    <!-- Custom style CSS -->
-    <link rel="stylesheet" href="../../static/adminResources/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='../../static/adminResources/image/favicon.ico'/>
+    <title>Add Country - University Recommendation System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .btn-fancy {
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease 0s;
+        }
+        .btn-fancy:hover {
+            transform: translateY(-7px);
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        }
+    </style>
 </head>
 
 <body>
-<div class="loader"></div>
-<div id="app">
-    <div class="main-wrapper main-wrapper-1">
-        <div class="navbar-bg"></div>
-
-        {% include 'admin/header.html' %}
-
-
-        {% include 'admin/menu.html' %}
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <section class="section">
-                <div class="section-body">
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-lg-12">
-                            <div class="card">
-                                <form action="/admin/insert_country" method="post">
-                                    <div class="card-header">
-                                        <h4>Add Country</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label>Country Name</label>
-                                            <input type="text" class="form-control" required="" name="countryName">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Country Description</label>
-                                            <textarea class="form-control" required=""
-                                                      name="countryDescription"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
+    <div class="container mt-5">
+        <h2 class="mb-4">Add Country</h2>
+        <form id="addCountryForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="countryName">Country Name</label>
+                        <input type="text" class="form-control" id="countryName" name="countryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countryCode">Country Code</label>
+                        <input type="text" class="form-control" id="countryCode" name="countryCode" maxlength="3" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="continent">Continent</label>
+                        <select class="form-control select2" id="continent" name="continent" required>
+                            <option value="">Select Continent</option>
+                            <option value="Africa">Africa</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Europe">Europe</option>
+                            <option value="North America">North America</option>
+                            <option value="South America">South America</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Antarctica">Antarctica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="officialLanguages">Official Language(s)</label>
+                        <select class="form-control select2" id="officialLanguages" name="officialLanguages[]" multiple>
+                            <option value="English">English</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="German">German</option>
+                            <option value="Chinese">Chinese</option>
+                        </select>
                     </div>
                 </div>
-            </section>
-            </section>
-
-
-            {% include 'admin/footer.html' %}
-
-        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <input type="text" class="form-control" id="currency" name="currency">
+                    </div>
+                    <div class="form-group">
+                        <label for="averageLivingCost">Average Living Cost (USD/month)</label>
+                        <input type="number" class="form-control" id="averageLivingCost" name="averageLivingCost">
+                    </div>
+                    <div class="form-group">
+                        <label for="educationSystem">Education System Overview</label>
+                        <textarea class="form-control" id="educationSystem" name="educationSystem" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="visaRequirements">Visa Requirements</label>
+                        <textarea class="form-control" id="visaRequirements" name="visaRequirements" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="countryDescription">Country Description</label>
+                <textarea class="form-control" id="countryDescription" name="countryDescription" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="topUniversities">Top Universities</label>
+                <select class="form-control select2" id="topUniversities" name="topUniversities[]" multiple>
+                    <!-- Add university options dynamically or manually -->
+                </select>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn-fancy"><i class="fas fa-globe-americas mr-2"></i>Add Country</button>
+                <button type="reset" class="btn-fancy ml-3"><i class="fas fa-undo mr-2"></i>Reset Form</button>
+            </div>
+        </form>
     </div>
-    <!-- General JS Scripts -->
-    <script src="../../static/adminResources/js/app.min.js"></script>
-    <!-- JS Libraies -->
-    <!-- Page Specific JS File -->
-    <!-- Template JS File -->
-    <script src="../../static/adminResources/js/scripts.js"></script>
-    <!-- Custom JS File -->
-    <script src="../../static/adminResources/js/custom.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function () {
-            iziToast.error({
-                title: 'Hello, world!',
-                message: 'This awesome plugin is made by iziToast',
-                position: 'topRight'
+        $(document).ready(function() {
+            $('.select2').select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            });
+
+            $('#addCountryForm').on('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Country added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
             });
         });
     </script>
-</div>
-
 </body>
 
 </html>
