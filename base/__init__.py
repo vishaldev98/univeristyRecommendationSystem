@@ -1,7 +1,7 @@
 import warnings
 from datetime import timedelta
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 # Ignore specific warnings
@@ -26,6 +26,7 @@ from base.com.vo.login_vo import LoginVO  # Import your models here
 
 # Import controllers after db initialization
 import base.com.controller
+
 
 
 
