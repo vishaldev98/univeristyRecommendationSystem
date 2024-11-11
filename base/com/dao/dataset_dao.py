@@ -11,8 +11,8 @@ class DatasetDAO:
         dataset_vo_list = DatasetVO.query.all()
         return dataset_vo_list
 
-    def delete_dataset(self, dataset_vo):
-        dataset_vo_list = DatasetVO.query.filter_by(dataset_id=dataset_vo.dataset_id).first()
+    def delete_dataset(self, dataset_id):
+        dataset_vo_list = DatasetVO.query.get(dataset_id)
         db.session.delete(dataset_vo_list)
         db.session.commit()
         return dataset_vo_list
