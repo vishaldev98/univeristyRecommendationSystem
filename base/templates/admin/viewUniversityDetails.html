@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HiliteUI Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet" href="../../static/adminResources/css/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/image/favicon.png"/>
+</head>
+
+<body class="sidebar-light">
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+
+    {% include 'admin/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'admin/menu.html' %}
+
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">View University Details</h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>University Name</th>
+                                            <th>Degree Name</th>
+                                            <th>Department Name</th>
+                                            <th>Last Year CutOff</th>
+                                            <th>IELTS</th>
+                                            <th>GRE</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in universitydetails_vo_list %}
+                                            <tr>
+
+                                                <td>{{ row[2]['universityinfo_name'] }}</td>
+                                                <td>{{ row[0]['degree_name'] }}</td>
+                                                <td>{{ row[1]['department_name'] }}</td>
+                                                <td>{{ row[3]['universitydetails_cutoff'] }}</td>
+                                                <td>{{ row[3]['universitydetails_ielts_score'] }}</td>
+                                                <td>{{ row[3]['universitydetails_gre_score'] }}</td>
+                                                <td>
+                                                    <a href="/admin/edit_universitydetails?universityDetailsId={{ row[3]['universitydetails_id'] }}">
+                                                        <i class="mdi mdi-pencil-box"
+                                                           style="font-size: 20px;margin-left: 15px"></i>
+                                                    </a>
+                                                    <a href="/admin/delete_universitydetails?universityDetailsId={{ row[3]['universitydetails_id'] }}">
+                                                        <i class="mdi mdi-delete"
+                                                           style="font-size: 20px;margin-left: 15px;color: #ff5f61"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+
+            {% include 'admin/footer.html' %}
+
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- base:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="../../static/adminResources/js/jquery.dataTables.js"></script>
+<script src="../../static/adminResources/js/dataTables.bootstrap4.js"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/data-table.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>
