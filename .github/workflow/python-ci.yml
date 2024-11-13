@@ -3,10 +3,18 @@ name: Python Flask CI
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the 'main' branch
+      - main
+      - likhit
+      - tanya
+      - vishal
+      - mohith
   pull_request:
     branches:
-      - main  # Trigger the workflow on pull requests to 'main'
+      - main
+      - likhit
+      - tanya
+      - vishal
+      - mohith
 
 jobs:
   test:
