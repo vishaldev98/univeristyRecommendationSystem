@@ -7,7 +7,7 @@ from base.com.controller.login_controller import admin_login_session, admin_logo
 from base.com.dao.complain_dao import ComplainDAO
 from base.com.dao.login_dao import LoginDAO
 from base.com.vo.complain_vo import ComplainVO
-
+from base.com.vo.login_vo import LoginVO
 
 
 @app.route("/admin/view_complain")
