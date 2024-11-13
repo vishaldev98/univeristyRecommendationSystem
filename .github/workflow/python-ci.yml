@@ -1,20 +1,6 @@
 name: Python Flask CI
 
-on:
-  push:
-    branches:
-      - main        # Trigger on push to the 'main' branch
-      - likhit      # Trigger on push to the 'likhit' branch
-      - tanya       # Trigger on push to the 'tanya' branch
-      - vishal      # Trigger on push to the 'vishal' branch
-      - mohith      # Trigger on push to the 'mohith' branch
-  pull_request:
-    branches:
-      - main        # Trigger on pull requests targeting the 'main' branch
-      - likhit      # Trigger on pull requests targeting the 'likhit' branch
-      - tanya       # Trigger on pull requests targeting the 'tanya' branch
-      - vishal      # Trigger on pull requests targeting the 'vishal' branch
-      - mohith      # Trigger on pull requests targeting the 'mohith' branch
+on: push
 
 jobs:
   test:
