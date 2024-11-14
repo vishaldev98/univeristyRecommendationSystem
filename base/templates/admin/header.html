@@ -1,27 +1,31 @@
-<nav class="navbar navbar-expand-lg main-navbar sticky">
-    <div class="form-inline mr-auto">
-        <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-									collapse-btn"> <i data-feather="align-justify"></i></a></li>
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-left navbar-brand-wrapper d-flex align-items-center justify-content-between">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="../../static/adminResources/image/logo.svg"
+                                                                  alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                src="../../static/adminResources/image/logo-mini.svg" alt="logo"/></a>
+        <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav">
 
 
-            <ul class="navbar-nav navbar-right">
-                <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                        class="nav-link dropdown-toggle nav-link-lg nav-link-user"
-                                        style="margin-left: 950px;"> <img alt="image"
-                                                                          src="../../static/adminResources/image/user.png"
-                                                                          class="user-img-radious-style">
-                    <span class="d-sm-none d-lg-inline-block"></span></a>
-
-
-                    <div class="dropdown-menu dropdown-menu-right pullDown">
-                        <div class="dropdown-title">Hello Vishal Gajjar</div>
-                        <a href="profile.html" class="dropdown-item has-icon"> <i class="far
-										fa-user"></i> Profile
-                        </a>
-                    </div>
-                </li>
-            </ul>
         </ul>
+        <ul class="navbar-nav navbar-nav-right">
+
+
+            <li class="nav-item nav-user-icon">
+                <a class="nav-link" href="#">
+                    <img src="../../static/adminResources/image/face28.jpg" alt="profile"/>
+                </a>
+            </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+        </button>
     </div>
 </nav>
