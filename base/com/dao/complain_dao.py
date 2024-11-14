@@ -32,4 +32,3 @@ class ComplainDAO:
     def update_complain(self, complain_vo):  # update data into complain table
         db.session.merge(complain_vo)
         db.session.commit()
-

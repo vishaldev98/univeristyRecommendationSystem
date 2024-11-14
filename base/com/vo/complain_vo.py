@@ -14,7 +14,7 @@ class ComplainVO(db.Model):
     complain_reply_description = db.Column("complain_reply_description", db.String(255))
     complain_reply_datetime = db.Column("complain_reply_datetime", db.DateTime)
 
-    def as_dict(self):
+    def as_di1ct(self):
         return {
             "complain_id": self.complain_id,
             "complain_subject": self.complain_subject,
@@ -26,5 +26,6 @@ class ComplainVO(db.Model):
             "complain_reply_description": self.complain_reply_description,
             "complain_reply_datetime": self.complain_reply_datetime,
         }
+
 
 

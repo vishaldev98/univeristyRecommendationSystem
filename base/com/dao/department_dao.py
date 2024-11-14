@@ -10,8 +10,8 @@ class DepartmentDAO:
 
     def view_department(self):
         department_vo_list = db.session.query(DepartmentVO, DegreeVO) \
-            .join(DegreeVO, DepartmentVO.department_degree_id == DegreeVO.degree_id).all()
-
+            .join(DegreeVO, DepartmentVO.department_degree_id == DegreeVO.degree_id) \
+            .all()
         return department_vo_list
 
     def delete_department(self, department_id):
@@ -26,3 +26,8 @@ class DepartmentDAO:
     def update_department(self, department_vo):
         db.session.merge(department_vo)
         db.session.commit()
+
+    def view_ajax_department_universitydetails(self, department_vo):
+        department_vo_list = DepartmentVO.query.filter_by(
+            department_degree_id=department_vo.department_degree_id).all()
+        return department_vo_list

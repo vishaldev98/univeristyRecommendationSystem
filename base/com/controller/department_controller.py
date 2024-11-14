@@ -7,7 +7,7 @@ from base.com.dao.department_dao import DepartmentDAO
 from base.com.vo.department_vo import DepartmentVO
 
 
-@app.route('/admin/load_department', methods=['GET'])
+@app.route('/admin/load_department')
 def admin_load_department():
     try:
         if admin_login_session() == "admin":
@@ -15,9 +15,9 @@ def admin_load_department():
             degree_vo_list = degree_dao.view_degree()
             return render_template('admin/addDepartment.html', degree_vo_list=degree_vo_list)
         else:
-            return admin_logout_session
+            return admin_logout_session()
     except Exception as ex:
-        print("admin_load_department route exception occured>>>>>>>>>>", ex)
+        print("in admin_load_department route exception occured>>>>>>>>>>", ex)
 
 
 @app.route('/admin/insert_department', methods=['POST'])
@@ -25,51 +25,47 @@ def admin_insert_department():
     try:
         if admin_login_session() == "admin":
             department_name = request.form.get('departmentName')
-            departmentDescription = request.form.get('departmentDescription')
+            department_description = request.form.get('departmentDescription')
             department_degree_id = request.form.get('departmentDegreeId')
 
             department_vo = DepartmentVO()
             department_dao = DepartmentDAO()
 
             department_vo.department_name = department_name
-            department_vo.department_description = departmentDescription
+            department_vo.department_description = department_description
             department_vo.department_degree_id = department_degree_id
             department_dao.insert_department(department_vo)
-
             return redirect(url_for('admin_view_department'))
         else:
-            return admin_logout_session
+            return admin_logout_session()
     except Exception as ex:
-        print("admin_insert_department route exception occured>>>>>>>>>>", ex)
+        print("in admin_insert_department route exception occured>>>>>>>>>>", ex)
 
 
-@app.route('/admin/view_department', methods=['GET'])
+@app.route('/admin/view_department')
 def admin_view_department():
     try:
         if admin_login_session() == "admin":
             department_dao = DepartmentDAO()
             department_vo_list = department_dao.view_department()
-            print("department_vo_list>>>>>>>>>>>>>", department_vo_list)
+            print("department_vo_list>>>>>>>>>>", department_vo_list)
             return render_template('admin/viewDepartment.html', department_vo_list=department_vo_list)
         else:
-            return admin_logout_session
-
+            return admin_logout_session()
     except Exception as ex:
-        print("admin_view_department route exception occured>>>>>>>>>>", ex)
+        print("in admin_view_department route exception occured>>>>>>>>>>", ex)
 
 
 @app.route('/admin/delete_department', methods=['GET'])
 def admin_delete_department():
     try:
         if admin_login_session() == "admin":
-            department_vo = DepartmentVO()
             department_dao = DepartmentDAO()
             department_id = request.args.get('departmentId')
-            department_vo.department_id = department_id
             department_dao.delete_department(department_id)
             return redirect(url_for('admin_view_department'))
         else:
-            return admin_logout_session
+            return admin_logout_session()
     except Exception as ex:
         print("in admin_delete_department route exception occured>>>>>>>>>>", ex)
 
@@ -89,7 +85,7 @@ def admin_edit_department():
             return render_template('admin/editDepartment.html', degree_vo_list=degree_vo_list,
                                    department_vo_list=department_vo_list)
         else:
-            return admin_logout_session
+            return admin_logout_session()
     except Exception as ex:
         print("in admin_edit_department route exception occured>>>>>>>>>>", ex)
 
@@ -113,7 +109,6 @@ def admin_update_department():
             department_dao.update_department(department_vo)
             return redirect(url_for('admin_view_department'))
         else:
-            return admin_logout_session
-
+            return admin_logout_session()
     except Exception as ex:
         print("in admin_update_department route exception occured>>>>>>>>>>", ex)

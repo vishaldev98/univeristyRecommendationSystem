@@ -2,6 +2,7 @@ import warnings
 
 import pandas as pd
 from flask import request, render_template,redirect
+from six import print_
 
 from base import app
 from base.com.controller.login_controller import admin_login_session, admin_logout_session
@@ -42,6 +43,7 @@ def user_insert_prediction():
             prediction_conference_attend = request.form.get('predictionConferenceAttend')
             prediction_country = request.form.get('predictionCountry')
 
+
             prediction_gre_score = int(prediction_gre_score)
             prediction_ielts_score = float(prediction_ielts_score)
             prediction_gpa_score = float(prediction_gpa_score)
@@ -64,6 +66,9 @@ def user_insert_prediction():
                                'ResearchPaper', 'ConferenceAttend']
                 df = pd.DataFrame([column_value], columns=column_name)
                 prediction_university = perform_university_prediction_usa(df)
+                print("Prediction for USA:", prediction_university)
+                if not prediction_university:
+                    prediction_university = "No prediction available"
                 prediction_vo.prediction_university = prediction_university
 
             elif prediction_country == 'Canada':
@@ -86,6 +91,10 @@ def user_insert_prediction():
                                'ResearchPaper', 'ConferenceAttend']
                 df = pd.DataFrame([column_value], columns=column_name)
                 prediction_university = perform_university_prediction_australia(df)
+                prediction_vo.prediction_university = prediction_university
+
+                if not prediction_university:
+                    prediction_university = "No prediction available"
                 prediction_vo.prediction_university = prediction_university
 
             prediction_vo.prediction_gre_score = prediction_gre_score

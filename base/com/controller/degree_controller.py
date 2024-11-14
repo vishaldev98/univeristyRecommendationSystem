@@ -6,7 +6,7 @@ from base.com.dao.degree_dao import DegreeDAO
 from base.com.vo.degree_vo import DegreeVO
 
 
-@app.route('/admin/load_degree', methods=['GET'])
+@app.route('/admin/load_degree')
 def admin_load_degree():
     try:
         if admin_login_session() == "admin":
@@ -21,14 +21,14 @@ def admin_load_degree():
 def admin_insert_degree():
     try:
         if admin_login_session() == "admin":
-            degree_name = request.form.get('degreeName')
-            degreeDescription = request.form.get('degreeDescription')
+            degree_name = request.form.get("degreeName")
+            degree_description = request.form.get("degreeDescription")
 
             degree_vo = DegreeVO()
             degree_dao = DegreeDAO()
 
             degree_vo.degree_name = degree_name
-            degree_vo.degree_description = degreeDescription
+            degree_vo.degree_description = degree_description
             degree_dao.insert_degree(degree_vo)
             return redirect('/admin/view_degree')
         else:
@@ -37,16 +37,16 @@ def admin_insert_degree():
         print("admin_insert_degree route exception occured>>>>>>>>>>", ex)
 
 
-@app.route('/admin/view_degree', methods=['GET'])
+@app.route('/admin/view_degree')
 def admin_view_degree():
     try:
         if admin_login_session() == "admin":
             degree_dao = DegreeDAO()
             degree_vo_list = degree_dao.view_degree()
+            print("in admin_view_degree degree_vo_list>>>>>>>>>>>>>>", degree_vo_list)
             return render_template('admin/viewDegree.html', degree_vo_list=degree_vo_list)
         else:
             return admin_logout_session()
-
     except Exception as ex:
         print("admin_view_degree route exception occured>>>>>>>>>>", ex)
 
@@ -73,7 +73,6 @@ def admin_delete_degree():
 def admin_edit_degree():
     try:
         if admin_login_session() == "admin":
-
             degree_vo = DegreeVO()
             degree_dao = DegreeDAO()
 
