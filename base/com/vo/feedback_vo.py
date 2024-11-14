@@ -20,3 +20,4 @@ class FeedbackVO(db.Model):
         }
 
 
+db.create_all()

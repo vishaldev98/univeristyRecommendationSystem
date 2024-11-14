@@ -92,7 +92,7 @@ def user_view_feedback():
             login_id = login_dao.find_login_id(login_vo)
             feedback_vo.feedback_login_id = login_id
             feedback_vo_list = feedback_dao.user_view_feedback()
-            print("feedback_vo_list>>>>>>>>",feedback_vo_list)
+            print("feedback_vo_list>>>>>>>>", feedback_vo_list)
 
             return render_template("user/addFeedback.html", feedback_vo_list=feedback_vo_list)
         else:

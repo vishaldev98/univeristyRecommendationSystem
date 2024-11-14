@@ -10,7 +10,7 @@ global_loginvo_list = []
 global_login_secretkey_set = {0}
 
 
-@app.route('/admin/login', methods=['GET'])
+@app.route('/', methods=['GET'])
 def admin_load_login():
     try:
         return render_template('admin/login.html')
@@ -80,7 +80,6 @@ def admin_validate_login():
                     print("in admin_validate_login login_secretkey>>>>>>>>>>>>>>>", login_secretkey)
                     print("in admin_validate_login login_username>>>>>>>>>>>>>>>", login_username)
                     return response
-
                 else:
                     return redirect(url_for('admin_logout_session'))
     except Exception as ex:
@@ -106,7 +105,7 @@ def user_load_dashboard():
         else:
             return redirect(url_for('admin_logout_session'))
     except Exception as ex:
-        print("user_load_dashboard route exception occured>>>>>>>>>>", ex)
+        print("admin_load_dashboard route exception occured>>>>>>>>>>", ex)
 
 
 @app.route('/admin/login_session')
@@ -126,7 +125,7 @@ def admin_login_session():
             if login_secretkey in i.keys():
                 if i[login_secretkey]['login_role'] == 'admin':
                     login_role_flag = "admin"
-                elif i[login_secretkey]['login_role'] == 'user':
+                if i[login_secretkey]['login_role'] == 'user':
                     login_role_flag = "user"
 
         print("after login_role_flag>>>>>>>>>>", login_role_flag)

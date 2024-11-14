@@ -16,10 +16,6 @@ class LoginDAO:
         login_vo_list = LoginVO.query.all()
         return login_vo_list
 
-    def update_login(self, login_vo):
-        db.session.merge(login_vo)
-        db.session.commit()
-
     def find_login_id(self, login_vo):
         login_vo_list = LoginVO.query.filter_by(login_username=login_vo.login_username).all()
         login_id = login_vo_list[0].login_id
@@ -29,4 +25,3 @@ class LoginDAO:
         login_vo_list = LoginVO.query.filter_by(login_id=login_vo.login_id).all()
         login_username = login_vo_list[0].login_username
         return login_username
-
