@@ -1,0 +1,54 @@
+name: Python Flask CI
+
+on:
+  push:
+    branches:
+      - main        # Trigger on push to the 'main' branch
+      - likhit      # Trigger on push to the 'likhit' branch
+      - tanya       # Trigger on push to the 'tanya' branch
+      - vishal      # Trigger on push to the 'vishal' branch
+      - mohith      # Trigger on push to the 'mohith' branch
+  pull_request:
+    branches:
+      - main        # Trigger on pull requests targeting the 'main' branch
+      - likhit      # Trigger on pull requests targeting the 'likhit' branch
+      - tanya       # Trigger on pull requests targeting the 'tanya' branch
+      - vishal      # Trigger on pull requests targeting the 'vishal' branch
+      - mohith      # Trigger on pull requests targeting the 'mohith' branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # The workflow will run on the latest Ubuntu image
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]  # Test across multiple Python versions
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Set up Python version (matrix strategy)
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # 3. Install dependencies from requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Lint the code with flake8
+      - name: Run Linter (flake8)
+        run: |
+          pip install flake8
+          flake8 app/  # Specify the directory where your Flask code resides (e.g., app/)
+
+      # 5. Run tests with pytest
+      - name: Run Tests with pytest
+        run: |
+          pip install pytest
+          pytest  # This will automatically find and run tests in the `tests/` folder
