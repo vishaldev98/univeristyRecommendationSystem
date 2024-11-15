@@ -21,4 +21,3 @@ app.config['SQLALCHEMY_MAX_OVERFLOW'] = 0
 
 db = SQLAlchemy(app)
 
-import base.com.controller

@@ -85,4 +85,3 @@ def extract_country_id(html_data, country_name):
 
 if __name__ == '__main__':
     unittest.main()
-
