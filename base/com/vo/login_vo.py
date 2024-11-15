@@ -19,6 +19,3 @@ class LoginVO(db.Model):
             'login_status': self.login_status,
             'login_secretkey': self.login_secretkey
         }
-
-
-db.create_all()

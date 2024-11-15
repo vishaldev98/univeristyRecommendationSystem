@@ -29,4 +29,3 @@ class RequestPredictionVO(db.Model):
         }
 
 
-db.create_all()

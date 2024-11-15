@@ -18,4 +18,3 @@ class DepartmentVO(db.Model):
         }
 
 
-db.create_all()

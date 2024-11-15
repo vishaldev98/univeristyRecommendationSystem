@@ -29,4 +29,4 @@ class UniversityDetailsVO(db.Model):
         }
 
 
-db.create_all()
+

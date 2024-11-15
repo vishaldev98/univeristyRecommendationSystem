@@ -28,4 +28,3 @@ class ComplainVO(db.Model):
         }
 
 
-db.create_all()

@@ -23,4 +23,3 @@ class UniversityInfoVO(db.Model):
         }
 
 
-db.create_all()

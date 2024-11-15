@@ -15,4 +15,3 @@ class DegreeVO(db.Model):
         }
 
 
-db.create_all()

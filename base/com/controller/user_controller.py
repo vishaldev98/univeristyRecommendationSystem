@@ -40,17 +40,16 @@ def user_insert_user():
         login_password = ''.join((random.choice(string.ascii_letters + string.digits)) for x in range(8))
         print("in admin_insert_user login_password>>>>>>>>>", login_password)
 
-        sender = "yashnotani1999@gmail.com"
+        sender = "universityrecommendationsystem@gmail.com"
         receiver = login_username
         msg = MIMEMultipart()
         msg['From'] = sender
         msg['To'] = receiver
         msg['Subject'] = "PYTHON PASSWORD"
         msg.attach(MIMEText(login_password, 'plain'))
-
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(sender, "99Hsay99$")
+        server.login(sender, "djev gacb fenu bbja")
         text = msg.as_string()
         server.sendmail(sender, receiver, text)
         server.quit()

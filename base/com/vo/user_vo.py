@@ -25,4 +25,3 @@ class UserVO(db.Model):
         }
 
 
-db.create_all()

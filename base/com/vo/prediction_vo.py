@@ -35,4 +35,3 @@ class PredictionVO(db.Model):
         }
 
 
-db.create_all()
