@@ -1,53 +1,57 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Academ - Register</title>
-    <meta name="description" content="">
+    <meta name="description" content="Join Academ and enhance your learning experience. Register now!">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- bootstrap v4.0.0 -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../static/userResources/css/bootstrap.min.css">
-    <!-- font-awesome css -->
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="../../static/userResources/css/font-awesome.min.css">
-    <!-- themify-icons css -->
-    <link rel="stylesheet" href="../../static/userResources/css/themify-icons.css">
-    <!-- themify-icons css -->
-    <link rel="stylesheet" href="../../static/userResources/css/ionicons.min.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="../../static/userResources/css/animate.css">
-    <!-- cssanimation css -->
-    <link rel="stylesheet" href="../../static/userResources/css/cssanimation.min.css">
-    <!-- jquery-ui.min css -->
-    <link rel="stylesheet" href="../../static/userResources/css/jquery-ui.min.css">
-    <!-- venobox css -->
-    <link rel="stylesheet" href="../../static/userResources/css/venobox.css">
-    <!-- jquery.mmenu css -->
-    <link rel="stylesheet" href="../../static/userResources/css/jquery.mmenu.css">
-    <!-- slick css -->
-    <link rel="stylesheet" href="../../static/userResources/css/slick.css">
-    <!-- slick-theme css -->
-    <link rel="stylesheet" href="../../static/userResources/css/slick-theme.css">
-    <!-- helper css -->
-    <link rel="stylesheet" href="../../static/userResources/css/helper.css">
-    <!-- style css -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../static/userResources/css/style.css">
-    <!-- responsive css -->
     <link rel="stylesheet" href="../../static/userResources/css/responsive.css">
 </head>
 
 <body>
 <!--[if lte IE 9]>
-	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
 
 {% include 'user/header.html' %}
-<!--page-banner-area start-->
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Academ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Banner -->
 <div class="page-banner height-200 bg-1">
     <div class="d-table">
         <div class="page-title vertical-middle text-center">
@@ -55,9 +59,8 @@
         </div>
     </div>
 </div>
-<!--page-banner-area end-->
 
-<!--breadcrumb-area start-->
+<!-- Breadcrumb Area -->
 <div class="breadcrumb-area mt-25">
     <div class="container">
         <div class="row">
@@ -73,52 +76,29 @@
         </div>
     </div>
 </div>
-<!--breadcrumb-area end-->
 
-<!--register-area start-->
+<!-- Register Area -->
 <div class="register-area mt-70">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12 mb-10">
-                        <div class="img-100p img-block">
-                            <img src="../../static/userResources/images/register/1.jpg" alt=""/>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6 pr-05">
-                        <div class="img-100p img-block mb-xs-10">
-                            <img src="../../static/userResources/images/register/2.jpg" alt=""/>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6 pl-05">
-                        <div class="img-100p img-block">
-                            <img src="../../static/userResources/images/register/3.jpg" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mt-sm-40">
                 <div class="section-title style-3">
-                    <h2>Create Your Account and Join Us !</h2>
+                    <h2>Create Your Account and Join Us!</h2>
                 </div>
                 <div class="input-form register-form mt-60">
                     <form id="contactForm" data-toggle="validator" method="post" action="/user/insert_user">
                         <div class="row">
                             <div class="col-sm-12">
-                                <input type="email" name="loginUsername" placeholder="UserName" required/>
+                                <input type="email" name="loginUsername" placeholder="User Name" required/>
                             </div>
-
                             <div class="col-sm-12 mt-25">
-                                <input type="text" name="userFirstname" placeholder="FirstName" required/>
+                                <input type="text" name="userFirstname" placeholder="First Name" required/>
                             </div>
-
                             <div class="col-sm-12 mt-25">
-                                <input type="text" name="userLastname" placeholder="LastName" required/>
+                                <input type="text" name="userLastname" placeholder="Last Name" required/>
                             </div>
-
                             <div class="col-sm-12 mt-25">
-                                <select class="col-sm form-control" name="userGender">
+                                <select class="col-sm form-control" name="userGender" required>
                                     <option selected disabled>Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -128,7 +108,7 @@
                                 <textarea name="userAddress" placeholder="Address" required></textarea>
                             </div>
                             <div class="col-sm-12 mt-25">
-                                <select class="col-sm form-control" name="userCountryId">
+                                <select class="col-sm form-control" name="userCountryId" required>
                                     <option selected disabled>Select Country</option>
                                     {% for index in country_vo_list %}
                                         <option value="{{ index['country_id'] }}">{{ index['country_name'] }}</option>
@@ -136,53 +116,44 @@
                                 </select>
                             </div>
                             <div class="col-lg-6 mt-30">
-                                <input type="submit" class="btn-common"/>
+                                <input type="submit" class="btn-common" value="Register"/>
                             </div>
-                            <div>
-                                Already Have an Account?<a href="/" class=" text-primary">Login</a>
+                            <div class="col-lg-6 mt-30">
+                                <p>Already Have an Account? <a href="/" class="text-primary">Login</a></p>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class="img-100p img-block">
+                    <img src="../../static/userResources/images/register/1.jpg" alt="Registration Image"/>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!--register-area end-->
+
 {% include 'user/footer.html' %}
 
-<!-- modernizr js -->
+<!-- Scripts -->
 <script src="../../static/userResources/js/vendor/modernizr-3.6.0.min.js"></script>
-<!-- jquery-3.3.1 version -->
 <script src="../../static/userResources/js/vendor/jquery-3.3.1.min.js"></script>
-<!-- jquery-migrate-3.0.0.min.js version -->
 <script src="../../static/userResources/js/vendor/jquery-migrate-3.0.0.min.js"></script>
-<!-- bootstra.min js -->
 <script src="../../static/userResources/js/bootstrap.min.js"></script>
-<!-- jquery-ui.min js -->
 <script src="../../static/userResources/js/jquery-ui.min.js"></script>
-<!-- mmenu js -->
 <script src="../../static/userResources/js/jquery.mmenu.js"></script>
-<!---venobox-js-->
 <script src="../../static/userResources/js/venobox.min.js"></script>
-<!---slick-js-->
 <script src="../../static/userResources/js/slick.min.js"></script>
-<!---counterup-js-->
 <script src="../../static/userResources/js/jquery.counterup.min.js"></script>
-<!---waypoints-js-->
 <script src="../../static/userResources/js/waypoints.js"></script>
-<!-- jquery.countdown js -->
 <script src="../../static/userResources/js/jquery.countdown.min.js"></script>
-<!---isotop-js-->
 <script src="../../static/userResources/js/isotope.pkgd.min.js"></script>
-<!---letteranimation-js-->
 <script src="../../static/userResources/js/letteranimation.min.js"></script>
-<!-- plugins js -->
 <script src="../../static/userResources/js/plugins.js"></script>
-<!-- main js -->
 <script src="../../static/userResources/js/main.js"></script>
 
-<!-- Modal -->
+<!-- Modal for Login -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -193,7 +164,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="login-left overlay">
-                            <img src="../../static/userResources/images/register/4.jpg" alt=""/>
+                            <img src="../../static/userResources/images/register/4.jpg" alt="Login Image"/>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -208,11 +179,11 @@
                                     <div class="row">
                                         <div class="col-sm-12 mt-25">
                                             <label>Username*</label>
-                                            <input type="text"/>
+                                            <input type="text" required/>
                                         </div>
                                         <div class="col-sm-12 mt-25">
                                             <label>Password*</label>
-                                            <input type="password"/>
+                                            <input type="password" required/>
                                         </div>
                                         <div class="col-lg-6 mt-30">
                                             <input type="checkbox" id="agree2"/>
