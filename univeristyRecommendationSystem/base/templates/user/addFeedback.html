@@ -1,255 +1,168 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Academ - Blog Details</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Academ - University Recommendation System</title>
+    <meta name="description" content="Explore our university recommendation system and find the best educational paths for you.">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="apple-touch-icon" href="icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- bootstrap v4.0.0 -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../static/userResources/css/bootstrap.min.css">
-    <!-- font-awesome css -->
     <link rel="stylesheet" href="../../static/userResources/css/font-awesome.min.css">
-    <!-- themify-icons css -->
     <link rel="stylesheet" href="../../static/userResources/css/themify-icons.css">
-    <!-- themify-icons css -->
-    <link rel="stylesheet" href="../../static/userResources/css/ionicons.min.css">
-    <!-- animate css -->
     <link rel="stylesheet" href="../../static/userResources/css/animate.css">
-    <!-- cssanimation css -->
-    <link rel="stylesheet" href="../../static/userResources/css/cssanimation.min.css">
-    <!-- jquery-ui.min css -->
-    <link rel="stylesheet" href="../../static/userResources/css/jquery-ui.min.css">
-    <!-- venobox css -->
-    <link rel="stylesheet" href="../../static/userResources/css/venobox.css">
-    <!-- jquery.mmenu css -->
-    <link rel="stylesheet" href="../../static/userResources/css/jquery.mmenu.css">
-    <!-- slick css -->
-    <link rel="stylesheet" href="../../static/userResources/css/slick.css">
-    <!-- slick-theme css -->
-    <link rel="stylesheet" href="../../static/userResources/css/slick-theme.css">
-    <!-- helper css -->
-    <link rel="stylesheet" href="../../static/userResources/css/helper.css">
-    <!-- style css -->
     <link rel="stylesheet" href="../../static/userResources/css/style.css">
-    <link rel="stylesheet" href="../../static/userResources/css/star.css">
-    <!-- responsive css -->
     <link rel="stylesheet" href="../../static/userResources/css/responsive.css">
-</head>
 
+    <!-- Favicon -->
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
 <body>
-<!--[if lte IE 9]>
-	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
 
 {% include 'user/header.html' %}
-<!--page-banner-area start-->
-<div class="page-banner height-200 bg-1">
+
+<!-- Navigation Menu -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Academ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/recommendations">Recommendations</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link btn btn-primary text-white ml-2" href="#" data-toggle='modal' data-target='#loginModal'>Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Banner -->
+<section class="page-banner height-200 bg-1">
     <div class="d-table">
         <div class="page-title vertical-middle text-center">
             <h2>Post Feedback</h2>
         </div>
     </div>
-</div>
-<!--page-banner-area end-->
+</section>
 
-<!--breadcrumb-area start-->
-<form method="post" action="/user/insert_feedback">
+<!-- Breadcrumb Area -->
+<nav class="breadcrumb-area mt-25">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="site-breadcrumb">
-                    <ul class="list-none">
-                        <li><a href="#">Home</a></li>
-                        <li><i class="fa fa-angle-right"></i></li>
-                        <li>Post Feedback</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <ul class='list-none'>
+            <li><a href="#">Home</a></li>
+            <li><i class='fa fa-angle-right'></i></li>
+            <li>Post Feedback</li>
+        </ul>
     </div>
-    </div>
-</form>
-<!--breadcrumb-area end-->
+</nav>
 
-<!--category-area start-->
-<form method="post" action="/user/insert_feedback">
-<div class="blog-area mt-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <!--single-blog-->
-                <div class="blog-comment-form mt-45">
+<!-- Feedback Form Section -->
+<section class='blog-area mt-70'>
+    <div class='container'>
+        <form method='post' action='/user/insert_feedback'>
+            <div class='row'>
+                <div class='col-lg-12 blog-comment-form mt-45'>
                     <h4>Post Feedback</h4>
-                    <div class="row mt-30">
-                        <div class="col-sm-12 mt-25">
-                            <div class="rate mb-4">
-                                <input type="radio" id="star5" name="rating" value="5"/><label for="star5"
-                                                                                             title="text">5
-                                stars</label>
-                                <input type="radio" id="star4" name="rating" value="4"/><label for="star4"
-                                                                                             title="text">4
-                                stars</label>
-                                <input type="radio" id="star3" name="rating" value="3"/><label for="star3"
-                                                                                             title="text">3
-                                stars</label>
-                                <input type="radio" id="star2" name="rating" value="2"/><label for="star2"
-                                                                                             title="text">2
-                                stars</label>
-                                <input type="radio" id="star1" name="rating" value="1"/><label for="star1"
-                                                                                             title="text">1
-                                star</label>
+                    <div class='row mt-30'>
+                        <!-- Star Rating System -->
+                        <div class='col-sm-12 mt-25'>
+                            <div class='rate mb-4'>
+                                <input type='radio' id='star5' name='rating' value='5'/><label for='star5'>5 stars</label>
+                                <input type='radio' id='star4' name='rating' value='4'/><label for='star4'>4 stars</label>
+                                <input type='radio' id='star3' name='rating' value='3'/><label for='star3'>3 stars</label>
+                                <input type='radio' id='star2' name='rating' value='2'/><label for='star2'>2 stars</label>
+                                <input type='radio' id='star1' name='rating' value='1'/><label for 'star1'>1 star</label>
                             </div>
+                        </div>
 
+                        <!-- Feedback Description -->
+                        <div class='col-sm-12 mt-30'>
+                            <textarea name='feedbackDescription' placeholder='Feedback Description' required></textarea>
                         </div>
-                        <div class="col-sm-12 mt-30">
-                            <textarea name="feedbackDescription" placeholder="Feedback Description"></textarea>
-                        </div>
-                        <div class="col-sm-12">
-                            <button type="submit" class="btn-common mt-25">Submit</button>
+
+                        <!-- Submit Button -->
+                        <div class='col-sm-12'>
+                            <button type='submit' class='btn-common mt-25'>Submit</button>
                         </div>
                     </div>
-                </div>
 
+                    <!-- Displaying Feedback -->
+                    <div class='blog-comments mt-45'>
+                        <h4>View Feedback</h4>
+                        {% if feedback_vo_list %}
+                            <ul class='list-none'>
+                                {% for feedback_vo_data in feedback_vo_list %}
+                                    <li>
+                                        <!-- User Info and Comment -->
+                                        <div class='comment-avatar'><img src="../../static/userResources/images/blog/comment/1.png" alt=""></div>
+                                        {{ feedback_vo_data[0]['login_username'] }}
+                                        <div class='comment-desc'>
+                                            <!-- Date and Rating -->
+                                            <small class='mt-15 text-muted'><i class='fa fa-clock-o'></i>{{ feedback_vo_data[1]['feedback_datetime'] }}</small>
+                                            {% for rating_star in range(feedback_vo_data[1]['feedback_rating']) %}
+                                                <i class='fa fa-star'></i>
+                                            {% endfor %}
+                                            <!-- Comment Text -->
+                                            <p>{{ feedback_vo_data[1]['feedback_description'] }}</p>
 
-                <div class="blog-comments">
-                    <h4>View Feedback</h4>
-                    {% if feedback_vo_list %}
-                        <ul class="list-none">
-                        {% for feedback_vo_data in feedback_vo_list %}
-                            <li>
-                            <div class="comment-avatar">
-                                <img src="../../static/userResources/images/blog/comment/1.png" alt=""/>
-                            </div>
-                            {{ feedback_vo_data[0]['login_username'] }}
-                            <div class="comment-desc">
-                                <small class="mt-15 text-muted"><i
-                                        class="fa fa-clock-0"></i>{{ feedback_vo_data[1]['feedback_datetime'] }}
-                                </small>
-                                <p>
-                                    {% for rating_star in range(feedback_vo_data[1]['feedback_rating']) %}
-                                        <i class="fa fa-star"></i>
-                                    {% endfor %}
-                                </p>
-                                <p>
-                                    {{ feedback_vo_data[1]['feedback_description'] }}
-                                </p>
-                                <p class="small text-muted mt-2 mb-0">
-                                </p>
-                                <div class="comment-reaction">
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </li>
-                    {% else %}
-                        <div class="row" style="margin-left:600px;">
-                            <h5>No Feedback Available !</h5>
-                        </div>
-                    </ul>
-                {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
+                                            <!-- Reaction Links -->
+                                            <div class='comment-reaction'>
+                                                <a href="#">Like</a> 
+                                                | 
+                                                <a href="#">Reply</a> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <h5>No Feedback Available!</h5>
+                        {% endif %}
+                    </div>
 
-<!--blog-comment-form-->
-</div>
-</div>
-</div>
-</div>
-<!--category-area end-->
+                </div> <!-- End of Blog Comment Form -->
+            </div> <!-- End of Row -->
+        </form> <!-- End of Form -->
+    </div> <!-- End of Container -->
+</section> <!-- End of Blog Area -->
+
 {% include 'user/footer.html' %}
 
-<!-- modernizr js -->
-<script src="../../static/userResources/js/vendor/modernizr-3.6.0.min.js"></script>
-<!-- jquery-3.3.1 version -->
-<script src="../../static/userResources/js/vendor/jquery-3.3.1.min.js"></script>
-<!-- jquery-migrate-3.0.0.min.js version -->
-<script src="../../static/userResources/js/vendor/jquery-migrate-3.0.0.min.js"></script>
-<!-- bootstra.min js -->
-<script src="../../static/userResources/js/bootstrap.min.js"></script>
-<!-- jquery-ui.min js -->
-<script src="../../static/userResources/js/jquery-ui.min.js"></script>
-<!-- mmenu js -->
-<script src="../../static/userResources/js/jquery.mmenu.js"></script>
-<!---venobox-js-->
-<script src="../../static/userResources/js/venobox.min.js"></script>
-<!---slick-js-->
-<script src="../../static/userResources/js/slick.min.js"></script>
-<!---counterup-js-->
-<script src="../../static/userResources/js/jquery.counterup.min.js"></script>
-<!---waypoints-js-->
-<script src="../../static/userResources/js/waypoints.js"></script>
-<!-- jquery.countdown js -->
-<script src="../../static/userResources/js/jquery.countdown.min.js"></script>
-<!---isotop-js-->
-<script src="../../static/userResources/js/isotope.pkgd.min.js"></script>
-<!---letteranimation-js-->
-<script src="../../static/userResources/js/letteranimation.min.js"></script>
-<!-- plugins js -->
-<script src="../../static/userResources/js/plugins.js"></script>
-<!-- main js -->
-<script src="../../static/userResources/js/main.js"></script>
+<!-- Scripts -->
+<script src="../../static/userResources/js/vendor/jquery.min.js"></script>
+<script src="../../static/userResources/js/bootstrap.bundle.min.js"></script>
 
-<!-- Modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body login-popup">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </button>
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="login-left overlay">
-                            <img src="../../static/userResources/images/register/4.jpg" alt=""/>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="login-right pr-30">
-                            <div class="section-title">
-                                <h3>Sign Up and Connect to <br/> Academ</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt.</p>
-                            </div>
-                            <div class="input-form register-form mt-10">
-                                <form id="contactForm" data-toggle="validator" method="POST"
-                                      action="../../static/userResources/php/contact.php">
-                                    <div class="row">
-                                        <div class="col-sm-12 mt-25">
-                                            <label>Username*</label>
-                                            <input type="text"/>
-                                        </div>
-                                        <div class="col-sm-12 mt-25">
-                                            <label>Password*</label>
-                                            <input type="password"/>
-                                        </div>
-                                        <div class="col-lg-6 mt-30">
-                                            <input type="checkbox" id="agree"/>
-                                            <label for="agree">Remember</label>
-                                        </div>
-                                        <div class="col-lg-6 mt-30">
-                                            <button class="btn-common">Login</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Modal for Login -->
+<div class='modal fade' id='loginModal' tabindex='-1' role='dialog' aria-hidden='true'>
+    <!-- Modal Content Here... -->
+    <!-- Example Modal Content -->
+    <div class='modal-dialog modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+            ... <!-- Add login form here -->
+        </div> 
+    </div> 
 </div>
+
+<script>
+// Optional: Client-side validation for the form
+document.querySelector('form').addEventListener('submit', function(event) {
+    const rating = document.querySelector('input[name="rating"]:checked');
+    const description = document.querySelector('textarea[name="feedbackDescription"]');
+
+    if (!rating) {
+        alert('Please select a rating.');
+        event.preventDefault();
+    } else if (description.value.trim() === '') {
+        alert('Please enter your feedback description.');
+        event.preventDefault();
+    }
+});
+</script>
 
 </body>
 </html>
