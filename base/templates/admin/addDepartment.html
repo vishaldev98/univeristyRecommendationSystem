@@ -2,100 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>University Recommendation System</title>
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="../../static/adminResources/css/app.min.css">
-    <!-- Template CSS -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HiliteUI Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
     <link rel="stylesheet" href="../../static/adminResources/css/style.css">
-    <link rel="stylesheet" href="../../static/adminResources/css/components.css">
-    <!-- Custom style CSS -->
-    <link rel="stylesheet" href="../../static/adminResources/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='../../static/adminResources/image/favicon.ico'/>
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/adminResources/image/favicon.png"/>
 </head>
 
-<body>
-<div class="loader"></div>
-<div id="app">
-    <div class="main-wrapper main-wrapper-1">
-        <div class="navbar-bg"></div>
+<body class="sidebar-light">
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
 
-        {% include 'admin/header.html' %}
 
+    {% include 'admin/header.html' %}
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
 
         {% include 'admin/menu.html' %}
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <section class="section">
-                <div class="section-body">
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-lg-12">
-                            <div class="card">
-                                <form action="/admin/insert_department" method="post">
 
-                                    <div class="card-header">
-                                        <h4>Add Department</h4>
-                                    </div>
-                                    <div class="card-body">
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Department</h4>
+                                <form class="cmxform" method="post" action="/admin/insert_department">
+                                    <fieldset>
                                         <div class="form-group">
-                                            <label>Degree Name</label>
-                                            <select class="form-control"
-                                                    name="departmentDegreeId">
-
-
+                                            <label for="cname">Degree Name</label>
+                                            <select id="cname" class="form-control" name="departmentDegreeId"
+                                                    required>
                                                 <option selected disabled>Select Degree</option>
+                                                {% for i in degree_vo_list %}
 
-                                                {% for row in degree_vo_list %}
-
-                                                    <option value="{{ row['degree_id'] }}">{{ row['degree_name'] }}</option>
+                                                    <option value="{{ i['degree_id'] }}">{{ i['degree_name'] }}</option>
 
                                                 {% endfor %}
-
                                             </select>
+                                        </div>
 
-                                            <br><br>
-                                            <label>Department Name</label>
-                                            <input type="text" class="form-control" required="" name="departmentName">
-                                        </div>
                                         <div class="form-group">
-                                            <label>Department Description</label>
-                                            <textarea class="form-control" required=""
-                                                      name="departmentDescription"></textarea>
+                                            <label for="cname">Department Name</label>
+                                            <input id="cname" class="form-control" name="departmentName" minlength="2"
+                                                   type="text"
+                                                   required>
                                         </div>
-                                    </div>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-primary">Submit</button>
-                                    </div>
+
+                                        <div class="form-group">
+                                            <label for="ccomment">Department Description</label>
+                                            <textarea id="ccomment" class="form-control" name="departmentDescription"
+                                                      required></textarea>
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                    </fieldset>
                                 </form>
                             </div>
-
                         </div>
-            </section>
-
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
 
             {% include 'admin/footer.html' %}
 
+            <!-- partial -->
         </div>
+        <!-- main-panel ends -->
     </div>
-    <!-- General JS Scripts -->
-    <script src="../../static/adminResources/js/app.min.js"></script>
-    <!-- JS Libraies -->
-    <!-- Page Specific JS File -->
-    <!-- Template JS File -->
-    <script src="../../static/adminResources/js/scripts.js"></script>
-    <!-- Custom JS File -->
-    <script src="../../static/adminResources/js/custom.js"></script>
-    <script>
-        $(document).ready(function () {
-            iziToast.error({
-                title: 'Hello, world!',
-                message: 'This awesome plugin is made by iziToast',
-                position: 'topRight'
-            });
-        });
-    </script>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- base:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="../../static/adminResources/js/jquery.validate.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap-maxlength.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>

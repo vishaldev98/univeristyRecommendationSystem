@@ -39,36 +39,36 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">View Department</h4>
+                        <h4 class="card-title">Manage User</h4>
                         <div class="row">
                             <div class="col-12">
                                 <div class="table-responsive">
                                     <table id="order-listing" class="table">
                                         <thead>
                                         <tr>
-                                            <th>Degree Name</th>
-                                            <th>Department Name</th>
-                                            <th>Department Description</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Gender</th>
+                                            <th>Contact</th>
+                                            <th>Username</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for row in department_vo_list %}
-                                            <tr>
-                                            <td>{{ row[0]['department_name'] }}</td>
-                                            <td>{{ row[0]['department_description'] }}</td>
-                                            <td>{{ row[1]['degree_name'] }}</td>
+                                        <tr>
+                                            <td>BE</td>
+                                            <td>Edinburgh</td>
+                                            <td>New York</td>
+                                            <td>Edinburgh</td>
+                                            <td>New York</td>
                                             <td>
-                                                <a href="/admin/edit_department?departmentId={{ row[0]['department_id'] }}">
-                                                    <i class="mdi mdi-pencil-box"
-                                                       style="font-size: 20px;margin-left: 15px"></i>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-success">Block</button>
                                                 </a>
-                                                <a href="/admin/delete_department?departmentId={{ row[0]['department_id'] }}">
-                                                    <i class="mdi mdi-delete"
-                                                       style="font-size: 20px;margin-left: 15px;color: #ff5f61"></i>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-danger">Unblock</button>
                                                 </a>
                                             </td>
-                                        {% endfor %}
                                         </tr>
                                         </tbody>
                                     </table>
