@@ -6,7 +6,7 @@ from flask import Blueprint, request, jsonify
 chatbot_bp = Blueprint('chatbot', __name__)
 
 # Securely set your OpenAI API key
-openai.api_key = os.getenv('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')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 @chatbot_bp.route('/chat', methods=['POST'])
 def chat():
