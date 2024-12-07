@@ -10,3 +10,4 @@ import base.com.controller.prediction_controller
 import base.com.controller.universitydetails_controller
 import base.com.controller.universityinfo_controller
 import base.com.controller.user_controller
+import base.com.controller.chatbot_controller
